@@ -11,11 +11,26 @@ namespace Varian.ConsoleApp
     {
         static void Main(string[] args)
         {
+            int number;
+            string input;
             while (true)
             {
-                int n = int.Parse(Console.ReadLine());
-
-                Console.WriteLine(Service.IntToRoman(n));
+                input = Console.ReadLine();
+                try
+                {
+                    if (int.TryParse(input, out number))
+                    {
+                        Console.WriteLine(Service.IntToRoman(number));
+                    }
+                    else
+                    {
+                        Console.WriteLine(input + " it's not a number");
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }
