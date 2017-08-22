@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Varian.BusinessLogic.Model;
 
 namespace Varian.BusinessLogic
 {
@@ -97,7 +99,37 @@ namespace Varian.BusinessLogic
             }
 
             return sb.ToString();
+        }
 
+        /// <summary>
+        /// ReplaceIntToRomanNumberOutput - replace int to roman numbers
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static ReplaceIntToRomanNumberOutput ReplaceIntToRomanNumber(string input)
+        {
+            var output = new ReplaceIntToRomanNumberOutput
+            {
+                NumberOfReplacements = 0,
+                NewString = input
+            };
+
+            // It will replace only the number that are whole word.
+            // Example: Wpa81 is an username. 81 would not match to be replaced.
+            var reg = new Regex(@"\b[0-9]+\b");
+            var matchList = reg.Matches(input);
+            var list = matchList.Cast<Match>().Select(match => int.Parse(match.Value)).ToList();
+
+            foreach (var item in list)
+            {
+                if(item >= 1 && item <= 3999)
+                {
+                    output.NewString = Regex.Replace(output.NewString, @"\b"+item.ToString()+@"\b", IntToRoman(item));
+                    output.NumberOfReplacements++;
+                }
+            }
+
+            return output;
         }
     }
 }
