@@ -14,7 +14,7 @@ namespace Varian.BusinessLogic
         /// IntToRoman - Convert int to Roman number
         /// </summary>
         /// <param name="number"></param>
-        /// <returns></returns>
+        /// <returns>Roman number</returns>
         public static string IntToRoman(int number)
         {
             if ((number < 1) || (number > 3999))
@@ -102,10 +102,10 @@ namespace Varian.BusinessLogic
         }
 
         /// <summary>
-        /// ReplaceIntToRomanNumberOutput - replace int to roman numbers
+        /// ReplaceIntToRomanNumber - replace int to roman numbers
         /// </summary>
         /// <param name="input"></param>
-        /// <returns></returns>
+        /// <returns>ReplaceIntToRomanNumberOutput</returns>
         public static ReplaceIntToRomanNumberOutput ReplaceIntToRomanNumber(string input)
         {
             var output = new ReplaceIntToRomanNumberOutput

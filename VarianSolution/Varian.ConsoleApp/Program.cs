@@ -12,37 +12,25 @@ namespace Varian.ConsoleApp
     {
         static void Main(string[] args)
         {
-            //int number;
-            //string input;
-            //while (true)
-            //{
-            //    input = Console.ReadLine();
-            //    try
-            //    {
-            //        if (int.TryParse(input, out number))
-            //        {
-            //            Console.WriteLine(Service.IntToRoman(number));
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine(input + " it's not a number");
-            //        }
-            //    }
-            //    catch(Exception ex)
-            //    {
-            //        Console.WriteLine(ex.Message);
-            //    }
-            //}
+            string input;
+            ReplaceIntToRomanNumberOutput output = null;
+            while (true)
+            {
+                Console.WriteLine("Enter a string to test the ReplaceIntToRomanNumber method.");
+                input = Console.ReadLine();
+                output = Service.ReplaceIntToRomanNumber(input);
+                if(output != null)
+                {
+                    Console.WriteLine("Number of replacements: " + output.NumberOfReplacements);
+                    Console.WriteLine("New string: " + output.NewString);
+                } else
+                {
+                    Console.WriteLine("Something bad happened!!!");
+                }
+                Console.WriteLine("----------------------------------");
 
-            // test
-            var input = "Consectetur 99 vgt 999 adipiscing 9999 elit 5.";
 
-            var output = Service.ReplaceIntToRomanNumber(input);
-
-            Console.WriteLine("Number of replacements: " + output.NumberOfReplacements);
-            Console.WriteLine("New string: " + output.NewString);
-
-            Console.ReadLine();
+            }
 
         }
     }
